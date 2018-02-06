@@ -1,0 +1,30 @@
+node {
+	try {
+
+		stage("Validate") {
+			// check the input parameters
+			assert env.GITHUB_PROJECT?.trim() : "The environment variable GITHUB_PROJECT is required!"
+			assert env.BUILD_BRANCH?.trim()      : "The environment variable Build branch is required!"
+			assert env.PIPELINE_CREDENTIALS_ID?.trim() : "Pipeline credential id is required !"
+        }
+	
+		stage ("checkout"){
+			git credentialsId: env.PIPELINE_CREDENTIALS_ID, url: "git@github.com:/${GITHUB_PROJECT}.git", branch: env.BUILD_BRANCH
+		}
+		
+		stage ("Compile, package"){
+			sh 'mvn clean package'
+		
+		}
+		
+		stage ("Archival"){
+			step ([$class: 'ArtifactArchiver',
+			artifacts: "target/*.?ar",
+			excludes: null])
+		
+		}
+	} catch (err){
+		echo "Caught: ${err}"
+	}
+
+}
