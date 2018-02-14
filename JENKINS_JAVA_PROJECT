@@ -19,7 +19,11 @@ node {
 		}
 		
 		stage ("Compile, package"){
-			sh 'mvn clean package'
+			sh '
+			#!C:\cygwin64\bin\nohup
+			mvn clean package
+			
+			'
 		
 		}
 		
