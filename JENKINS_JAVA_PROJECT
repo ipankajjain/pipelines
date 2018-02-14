@@ -11,8 +11,8 @@ node {
 	
 		stage ("checkout"){
 			def message = "\u272A Using the following parameters:\n" +
-                      "\u272A   GITHUB_PROJECT       : ${GITHUB_PROJECT}\n" +
-                      "\u272A   BUILD_BRANCH            : ${BUILD_BRANCH}\n" 
+                      " GITHUB_PROJECT       : ${GITHUB_PROJECT}\n" +
+                      " BUILD_BRANCH            : ${BUILD_BRANCH}\n" 
 		      
 		      echo message
 			git credentialsId: env.ADMIN_KEY, url: "git@github.com:${GITHUB_PROJECT}.git", branch: env.BUILD_BRANCH
