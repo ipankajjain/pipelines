@@ -10,7 +10,7 @@ node {
         	}
 	
 		stage ("checkout"){
-			git credentialsId: env.ADMIN_KEY, url: "git@github.com:${GITHUB_PROJECT}.git", branch: ${BUILD_BRANCH}
+			git credentialsId: env.ADMIN_KEY, url: "git@github.com:${GITHUB_PROJECT}.git", branch: env.BRANCH
 		}
 		
 		stage ("Compile, package"){
