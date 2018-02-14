@@ -15,7 +15,7 @@ node {
                       " BUILD_BRANCH            : ${BUILD_BRANCH}\n" 
 		      
 		      echo message
-			git credentialsId: env.ADMIN_KEY, url: "git@github.com:${GITHUB_PROJECT}.git", branch: env.BUILD_BRANCH
+			git credentialsId: ADMIN_KEY, url: "git@github.com:${GITHUB_PROJECT}.git", branch: env.BUILD_BRANCH
 		}
 		
 		stage ("Compile, package"){
