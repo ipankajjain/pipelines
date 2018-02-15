@@ -19,10 +19,9 @@ node {
 		}
 		
 		stage ("Compile, package"){
-			sh(''' 
-			mvn clean install
+			sh 'mvn clean install'
 			
-			''')
+			
 		
 		}
 		
