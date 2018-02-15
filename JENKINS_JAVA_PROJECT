@@ -19,7 +19,7 @@ node {
 		}
 		
 		stage ("Compile, package"){
-			bat(''' 
+			sh(''' 
 			mvn clean package
 			
 			''')
